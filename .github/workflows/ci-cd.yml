@@ -28,7 +28,8 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
     - uses: actions/checkout@v4
-    - name: Install Render CLI
-      run: curl -fsSL https://cli.render.com/install | bash
     - name: Deploy to Render
-      run: render deploy --api-key ${{ secrets.RENDER_API_KEY }} --service-id ${{ secrets.RENDER_SERVICE_ID }}
+      run: |
+        curl -fsSL https://cli.render.com/install | bash
+        export PATH="$HOME/.render/bin:$PATH"
+        render deploy --api-key ${{ secrets.RENDER_API_KEY }} --service-id ${{ secrets.RENDER_SERVICE_ID }}
