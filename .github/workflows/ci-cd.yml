@@ -28,4 +28,7 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
     - name: Deploy to Render
-      run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}

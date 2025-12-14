@@ -22,7 +22,7 @@ def test_read_item():
 def test_read_all_items():
     response = client.get("/items/")
     assert response.status_code == 200
-    # Assuming items are there from previous testss
+    # Assuming items are there from previous testsss
 
 def test_update_item():
     client.post("/items/3", json={"name": "Old", "description": "Old"})
