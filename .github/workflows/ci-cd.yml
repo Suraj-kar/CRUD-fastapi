@@ -27,9 +27,5 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
-    - uses: actions/checkout@v4
     - name: Deploy to Render
-      run: |
-        curl -fsSL https://cli.render.com/install | bash
-        export PATH="$HOME/.render/bin:$PATH"
-        render deploy --api-key ${{ secrets.RENDER_API_KEY }} --service-id ${{ secrets.RENDER_SERVICE_ID }}
+      run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
