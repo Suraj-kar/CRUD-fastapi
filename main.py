@@ -38,7 +38,7 @@ def update_item(id: int, item: Item):
         raise HTTPException(status_code=404, detail="Item not found")
     items_db[id] = item
     return items_db[id]
-
+#ss
 # DELETE
 @app.delete("/items/{id}")
 def delete_item(id: int):
